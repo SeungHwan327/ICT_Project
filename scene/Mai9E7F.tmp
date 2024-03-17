@@ -31,7 +31,7 @@ offset_left = 199.0
 offset_top = 285.0
 offset_right = 486.0
 offset_bottom = 372.0
-text = "무기 종류"
+text = "무기종류 "
 
 [node name="Button2" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -39,7 +39,7 @@ offset_left = 657.0
 offset_top = 285.0
 offset_right = 944.0
 offset_bottom = 372.0
-text = "좌표 입력"
+text = "좌표 입력 "
 
 [node name="Cannon" type="Sprite2D" parent="ColorRect"]
 position = Vector2(338, 506)

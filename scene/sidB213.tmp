@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://dn3ga0dj483nf"]
+
+[ext_resource type="Texture2D" uid="uid://0ektbsaeqals" path="res://images/Cannon.png" id="1_rjhen"]
+[ext_resource type="Script" path="res://script/sideView.gd" id="1_t6ydk"]
+[ext_resource type="Texture2D" uid="uid://bcxiuwke6nuue" path="res://images/Explosion.png" id="3_hkjxp"]
+
+[sub_resource type="Animation" id="Animation_5bcoo"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Cannon:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-126, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Cannon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ypf2m"]
+resource_name = "PUUNNG"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Cannon:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-126, -0.25, 0, 0.25, 0, 1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Cannon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0, 500, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0001, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwu34"]
+_data = {
+"RESET": SubResource("Animation_5bcoo"),
+"pung": SubResource("Animation_ypf2m")
+}
+
+[sub_resource type="Animation" id="Animation_dkeso"]
+resource_name = "Explosion"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/Explosion:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(728, -0.25, 0, 0.25, 0, 550, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(3.1, 4)
+}
+
+[sub_resource type="Animation" id="Animation_bu8mr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/Explosion:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(728, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dfk0"]
+_data = {
+"Explosion": SubResource("Animation_dkeso"),
+"RESET": SubResource("Animation_bu8mr")
+}
+
+[node name="sideView" type="CanvasLayer"]
+script = ExtResource("1_t6ydk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mwu34")
+}
+autoplay = "pung"
+
+[node name="Cannon" type="Sprite2D" parent="AnimationPlayer"]
+position = Vector2(-126, 13)
+rotation = 1.89109
+scale = Vector2(0.53965, 0.53965)
+texture = ExtResource("1_rjhen")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1dfk0")
+}
+
+[node name="Explosion" type="Sprite2D" parent="AnimationPlayer2"]
+position = Vector2(1041, 728)
+texture = ExtResource("3_hkjxp")

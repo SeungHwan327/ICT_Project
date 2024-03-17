@@ -8,11 +8,12 @@
 
 # 👥멤버구성
 * 이승환: Godot
-* 송재곤: Godot
+* 송재곤: Android Studio
 * 이범준: 하드웨어(아두이노)
 # ⚙️개발환경 
-* Unity
+* Godot
 * Arduino Ide
+* Android Studio
 # 📌주요기능
 * 회원가입
 * 아두이노를 통한 좌표계산
